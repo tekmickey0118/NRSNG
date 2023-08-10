@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  LogBox,
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
@@ -16,12 +17,25 @@ import {RootStackParamList} from '../../global/Type';
 import {styles as globalStyles} from '../../global/styles';
 import Button from '../../components/forms/Button';
 import {SCREEN_WIDTH} from '../../global/constants';
+import HubspotIntegration from '../../apis/HubSpot';
 
 type Props = NativeStackScreenProps<RootStackParamList>;
+
+LogBox.ignoreLogs([
+  'ViewPropTypes will be removed',
+  'ColorPropType will be removed',
+]);
 
 export const HomeScreen = ({navigation}: Props): JSX.Element => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  const handleFormSubmit = () => {
+    const email = 'example@example.com'; // Replace with the actual email value from your form input field
+    const username = 'exampleUser'; // Replace with the actual username value from your form input field
+
+    HubspotIntegration(email, username);
+  };
 
   return (
     <SafeAreaContainerView>
@@ -33,7 +47,14 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
               style={globalStyles.preview}
             />
             <Button
-              onPressOut={() => navigation.navigate('')}
+              onPressOut={() => {
+                try {
+                  setModalVisible(true);
+                } catch (err) {
+                  // handle rejection
+                  console.error(err);
+                }
+              }}
               style={globalStyles.button}
               title="Start Reading"
             />
@@ -47,13 +68,23 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
               visible={modalVisible}
               presentationStyle="overFullScreen"
               onRequestClose={() => {
-                setModalVisible(!modalVisible);
+                try {
+                  setModalVisible(!modalVisible);
+                } catch (err) {
+                  // handle rejection
+                  console.error(err);
+                }
               }}>
               <TouchableOpacity
                 style={{flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
                 activeOpacity={1}
                 onPressOut={() => {
-                  setModalVisible(!modalVisible);
+                  try {
+                    setModalVisible(!modalVisible);
+                  } catch (err) {
+                    // handle rejection
+                    console.error(err);
+                  }
                 }}>
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
@@ -91,6 +122,19 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
                         NRUSING.com. View terms of use.*
                       </Text>
                     </View>
+                    <Button
+                      onPress={() => {
+                        try {
+                          // Your code
+                          handleFormSubmit();
+                        } catch (err) {
+                          // handle rejection
+                          console.error(err);
+                        }
+                      }}
+                      style={styles.modal_button}
+                      title="Start Reading"
+                    />
                   </View>
                 </View>
               </TouchableOpacity>
@@ -107,7 +151,14 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
             </Text>
             <Button
               style={globalStyles.button}
-              onPress={() => setModalVisible(true)}
+              onPress={() => {
+                try {
+                  console.log('');
+                } catch (err) {
+                  // handle rejection
+                  console.error(err);
+                }
+              }}
               title="Create Free Account"
             />
           </View>
@@ -176,5 +227,9 @@ const styles = StyleSheet.create({
     objectFit: 'contain',
     flexShrink: 0,
     marginBottom: 5,
+  },
+  modal_button: {
+    width: '75%',
+    marginTop: 20,
   },
 });
