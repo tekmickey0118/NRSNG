@@ -4,232 +4,185 @@ import {
   View,
   Image,
   Modal,
-  StyleSheet,
+  ScrollView,
   TextInput,
   TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+  Linking,
   LogBox,
 } from 'react-native';
+
+import axios from 'axios';
+
 import CheckBox from 'react-native-check-box';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-
 import SafeAreaContainerView from '../../components/containers/SafeAreaContainerView';
-import {RootStackParamList} from '../../global/Type';
-import {styles as globalStyles} from '../../global/styles';
 import Button from '../../components/forms/Button';
-import {SCREEN_WIDTH} from '../../global/constants';
-import HubspotIntegration from '../../apis/HubSpot';
+import {validateForm} from '../../validation';
 
-type Props = NativeStackScreenProps<RootStackParamList>;
+import {styles as globalStyles} from './style';
+import {styles as modalStyles} from './style/modal';
 
-LogBox.ignoreLogs([
-  'ViewPropTypes will be removed',
-  'ColorPropType will be removed',
-]);
+export const HomeScreen = (): JSX.Element => {
+  let accessToken = 'pat-na1-a59ebb9a-6abf-4a6a-b584-594085f94c37';
 
-export const HomeScreen = ({navigation}: Props): JSX.Element => {
+  const header = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleFormSubmit = () => {
-    const email = 'example@example.com'; // Replace with the actual email value from your form input field
-    const username = 'exampleUser'; // Replace with the actual username value from your form input field
+  LogBox.ignoreLogs([
+    'ViewPropTypes will be removed',
+    'ColorPropType will be removed',
+  ]);
 
-    HubspotIntegration(email, username);
+  const openURL = () => {
+    const url = 'https://google.com'; // Replace with your desired URL
+
+    Linking.openURL(url)
+      .then(() => {
+        console.log('URL opened successfully');
+      })
+      .catch(error => {
+        console.log('Error opening URL:', error);
+      });
   };
 
   return (
     <SafeAreaContainerView>
-      <View style={globalStyles.container}>
-        <View style={globalStyles.sub_container_top}>
-          <View style={globalStyles.wrap_container}>
-            <Image
-              source={require('../../assets/images/preview.png')}
-              style={globalStyles.preview}
-            />
-            <Button
-              onPressOut={() => {
-                try {
-                  setModalVisible(true);
-                } catch (err) {
-                  // handle rejection
-                  console.error(err);
-                }
-              }}
-              style={globalStyles.button}
-              title="Start Reading"
-            />
+      <ScrollView>
+        <View style={globalStyles.container}>
+          <View style={globalStyles.sub_container_top}>
+            <View style={globalStyles.wrap_container}>
+              <Image
+                source={require('../../assets/images/preview.png')}
+                style={globalStyles.preview}
+              />
+              <Button
+                onPressOut={() => setModalVisible(true)}
+                style={globalStyles.button}
+                title="Start Reading"
+              />
+            </View>
           </View>
-        </View>
-        <View style={globalStyles.sub_container_bottom}>
-          <View style={globalStyles.wrap_container}>
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              presentationStyle="overFullScreen"
-              onRequestClose={() => {
-                try {
-                  setModalVisible(!modalVisible);
-                } catch (err) {
-                  // handle rejection
-                  console.error(err);
-                }
-              }}>
-              <TouchableOpacity
-                style={{flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)'}}
-                activeOpacity={1}
-                onPressOut={() => {
-                  try {
-                    setModalVisible(!modalVisible);
-                  } catch (err) {
-                    // handle rejection
-                    console.error(err);
-                  }
-                }}>
-                <View style={styles.centeredView}>
-                  <View style={styles.modalView}>
-                    <Text style={styles.modalText}>
-                      Enter Email Address To Open
-                    </Text>
-                    <Image
-                      source={require('../../assets/images/notes_logo.png')}
-                      style={styles.modal_logo}
-                    />
-                    <TextInput style={styles.input} placeholder="First name" />
-                    <TextInput style={styles.input} placeholder="Email" />
-                    <View
-                      style={{
-                        width: 245,
-                        marginTop: 5,
-                        display: 'flex',
-                        flexDirection: 'row',
-                      }}>
-                      <CheckBox
-                        onClick={() => {
-                          setIsChecked(!isChecked);
-                        }}
-                        checkBoxColor="#283652"
-                        isChecked={isChecked}
+          <View style={globalStyles.sub_container_bottom}>
+            <View style={globalStyles.wrap_container}>
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                presentationStyle="overFullScreen"
+                onRequestClose={() => setModalVisible(!modalVisible)}>
+                <TouchableOpacity
+                  style={modalStyles.container}
+                  activeOpacity={1}
+                  onPressOut={() => setModalVisible(!modalVisible)}>
+                  <View style={modalStyles.centeredView}>
+                    {isLoading ? (
+                      <ActivityIndicator
+                        size="large"
+                        color="#ffffff"
+                        animating={isLoading}
                       />
-                      <Text
-                        style={{
-                          marginLeft: 5,
-                          flexShrink: 1,
-                          fontSize: 11,
-                          color: '#283652',
-                        }}>
-                        I agree to receive other communications from
-                        NRUSING.com. View terms of use.*
-                      </Text>
-                    </View>
-                    <Button
-                      onPress={() => {
-                        try {
-                          // Your code
-                          handleFormSubmit();
-                        } catch (err) {
-                          // handle rejection
-                          console.error(err);
-                        }
-                      }}
-                      style={styles.modal_button}
-                      title="Start Reading"
-                    />
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </Modal>
+                    ) : (
+                      <View style={modalStyles.modalView}>
+                        <Text style={modalStyles.modalText}>
+                          Enter Email Address To Open
+                        </Text>
+                        <Image
+                          source={require('../../assets/images/notes_logo.png')}
+                          style={modalStyles.modal_logo}
+                        />
+                        <TextInput
+                          style={modalStyles.input}
+                          placeholder="First name"
+                          onChangeText={value => setFirstName(value)}
+                        />
+                        <TextInput
+                          style={modalStyles.input}
+                          placeholder="Email"
+                          onChangeText={value => setEmail(value)}
+                        />
+                        <View style={modalStyles.wrapper}>
+                          <CheckBox
+                            onClick={() => {
+                              setIsChecked(!isChecked);
+                            }}
+                            checkBoxColor="#283652"
+                            isChecked={isChecked}
+                          />
+                          <Text style={modalStyles.contentText}>
+                            I agree to receive other communications from
+                            NRUSING.com. View terms of use.*
+                          </Text>
+                        </View>
+                        <Button
+                          onPress={() => {
+                            let val_stats = validateForm(email, firstName);
 
-            <Image
-              source={require('../../assets/images/logo.png')}
-              style={globalStyles.logo}
-            />
-            <Text style={globalStyles.text1}>Now Available</Text>
-            <Text style={globalStyles.text2}>
-              NURSING.com Free Access - take your study on the go watch 10 FREE
-              minutes of our clear and concise videos each day
-            </Text>
-            <Button
-              style={globalStyles.button}
-              onPress={() => {
-                try {
-                  console.log('');
-                } catch (err) {
-                  // handle rejection
-                  console.error(err);
-                }
-              }}
-              title="Create Free Account"
-            />
+                            const data = {
+                              properties: {
+                                email: email,
+                                firstname: firstName,
+                              },
+                            };
+
+                            if (val_stats.status === 200) {
+                              setIsLoading(!isLoading);
+                              axios
+                                .post(
+                                  'https://api.hubapi.com/crm/v3/objects/contacts',
+                                  data,
+                                  header,
+                                )
+                                .then(() => {
+                                  setModalVisible(!modalVisible);
+                                })
+                                .catch(() => {
+                                  Alert.alert(
+                                    'Error',
+                                    'There are some problems in Server',
+                                  );
+                                });
+                            } else {
+                              Alert.alert('Warning', val_stats.message);
+                            }
+                          }}
+                          style={modalStyles.modal_button}
+                          title="Start Reading"
+                        />
+                      </View>
+                    )}
+                  </View>
+                </TouchableOpacity>
+              </Modal>
+
+              <Image
+                source={require('../../assets/images/logo.png')}
+                style={globalStyles.logo}
+              />
+              <Text style={globalStyles.text1}>Now Available</Text>
+              <Text style={globalStyles.text2}>
+                NURSING.com Free Access - take your study on the go watch 10
+                FREE minutes of our clear and concise videos each day
+              </Text>
+              <Button
+                style={globalStyles.button}
+                onPress={() => openURL()}
+                title="Create Free Account"
+              />
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaContainerView>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    width: 240,
-    height: 40,
-    margin: 3,
-    borderWidth: 2,
-    borderRadius: 4,
-    borderColor: '#283652',
-    padding: 10,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 4,
-    padding: 20,
-    width: SCREEN_WIDTH * 0.9,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    textAlign: 'justify',
-    fontSize: 23,
-    fontWeight: '500',
-    color: '#283652',
-  },
-  modal_logo: {
-    width: 170,
-    height: 40,
-    objectFit: 'contain',
-    flexShrink: 0,
-    marginBottom: 5,
-  },
-  modal_button: {
-    width: '75%',
-    marginTop: 20,
-  },
-});
