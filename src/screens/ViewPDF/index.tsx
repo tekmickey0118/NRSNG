@@ -1,18 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useEffect, useRef} from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Alert,
-  Linking,
-} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {View, Image, TouchableOpacity, Alert, Linking} from 'react-native';
 import PDF from 'react-native-pdf';
 
 import {RootStackParamList} from '../../global/Type';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../../global/constants';
+import {styles} from './style';
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
@@ -49,14 +42,7 @@ export const ViewPDFScreen = ({navigation}: Props): JSX.Element => {
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Image
             source={require('../../assets/images/top.png')}
-            style={{
-              width: 56,
-              height: 42,
-              marginTop: 70,
-              flexShrink: 0,
-              borderRadius: 5,
-              marginBottom: 50,
-            }}
+            style={styles.logoHome}
           />
         </TouchableOpacity>
       </View>
@@ -71,7 +57,6 @@ export const ViewPDFScreen = ({navigation}: Props): JSX.Element => {
           console.log(error);
         }}
         onPressLink={uri => {
-          console.log(uri);
           Linking.openURL(uri)
             .then(() => {
               console.log('URL opened successfully');
@@ -81,60 +66,26 @@ export const ViewPDFScreen = ({navigation}: Props): JSX.Element => {
             });
         }}
       />
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          marginTop: 50,
-          justifyContent: 'space-around',
-          width: SCREEN_WIDTH,
-        }}>
+      <View style={styles.bottomWrapper}>
         <TouchableOpacity onPress={goToPreviousPage}>
           <Image
             source={require('../../assets/images/left_arrow.png')}
-            style={{
-              width: 30,
-              height: 40,
-              flexShrink: 0,
-              borderRadius: 5,
-            }}
+            style={styles.logoPrevious}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => goToPage()}>
           <Image
             source={require('../../assets/images/center.png')}
-            style={{
-              width: 56,
-              height: 42,
-              flexShrink: 0,
-              borderRadius: 5,
-            }}
+            style={styles.logoFirst}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={goToNextPage}>
           <Image
             source={require('../../assets/images/right_arrow.png')}
-            style={{
-              width: 30,
-              height: 40,
-              flexShrink: 0,
-              borderRadius: 5,
-            }}
+            style={styles.logoNext}
           />
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#283f52',
-    height: SCREEN_HEIGHT,
-  },
-  pdfView: {
-    width: SCREEN_WIDTH,
-    height: (SCREEN_HEIGHT * 3) / 5,
-  },
-});
