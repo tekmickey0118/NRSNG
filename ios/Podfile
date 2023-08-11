@@ -45,6 +45,8 @@ target 'NRSNG' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
+
   target 'NRSNGTests' do
     inherit! :complete
     # Pods for testing

@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
-  Linking,
   LogBox,
 } from 'react-native';
 
@@ -23,7 +22,12 @@ import {validateForm} from '../../validation';
 import {styles as globalStyles} from './style';
 import {styles as modalStyles} from './style/modal';
 
-export const HomeScreen = (): JSX.Element => {
+import {RootStackParamList} from '../../global/Type';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+export const HomeScreen = ({navigation}: Props): JSX.Element => {
   let accessToken = 'pat-na1-a59ebb9a-6abf-4a6a-b584-594085f94c37';
 
   const header = {
@@ -44,17 +48,17 @@ export const HomeScreen = (): JSX.Element => {
     'ColorPropType will be removed',
   ]);
 
-  const openURL = () => {
-    const url = 'https://google.com'; // Replace with your desired URL
+  // const openURL = () => {
+  //   const url = 'https://google.com'; // Replace with your desired URL
 
-    Linking.openURL(url)
-      .then(() => {
-        console.log('URL opened successfully');
-      })
-      .catch(error => {
-        console.log('Error opening URL:', error);
-      });
-  };
+  //   Linking.openURL(url)
+  //     .then(() => {
+  //       console.log('URL opened successfully');
+  //     })
+  //     .catch(error => {
+  //       console.log('Error opening URL:', error);
+  //     });
+  // };
 
   return (
     <SafeAreaContainerView>
@@ -135,7 +139,7 @@ export const HomeScreen = (): JSX.Element => {
                               },
                             };
 
-                            if (val_stats.status === 200) {
+                            if (val_stats.status === 200 && isChecked) {
                               setIsLoading(!isLoading);
                               axios
                                 .post(
@@ -145,15 +149,28 @@ export const HomeScreen = (): JSX.Element => {
                                 )
                                 .then(() => {
                                   setModalVisible(!modalVisible);
+                                  setIsChecked(false);
+                                  setFirstName('');
+                                  setEmail('');
+                                  setIsLoading(false);
                                 })
                                 .catch(() => {
                                   Alert.alert(
                                     'Error',
                                     'There are some problems in Server',
                                   );
+                                  setIsChecked(false);
+                                  setFirstName('');
+                                  setEmail('');
+                                  setIsLoading(false);
                                 });
-                            } else {
+                            } else if (val_stats.status !== 200) {
                               Alert.alert('Warning', val_stats.message);
+                            } else if (!isChecked) {
+                              Alert.alert(
+                                'Warning',
+                                'Please agree with our Policy',
+                              );
                             }
                           }}
                           style={modalStyles.modal_button}
@@ -176,8 +193,8 @@ export const HomeScreen = (): JSX.Element => {
               </Text>
               <Button
                 style={globalStyles.button}
-                onPress={() => openURL()}
-                title="Create Free Account"
+                onPress={() => navigation.navigate('ViewPDF')}
+                title="View Video Lessons"
               />
             </View>
           </View>
