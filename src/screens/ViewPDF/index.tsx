@@ -25,14 +25,17 @@ export const ViewPDFScreen = ({navigation}: Props): JSX.Element => {
   const goToNextPage = () => {
     if (pdfRef && pdfRef.current) {
       pdfRef.current.setPage(pageNum + 1);
+      console.log(pdfRef.numPages);
       setPageNum(pageNum + 1);
     }
   };
 
   const goToPreviousPage = () => {
     if (pdfRef && pdfRef.current && pageNum) {
-      pdfRef.current.setPage(pageNum - 1); // Go to the first page for previous button
-      setPageNum(pageNum - 1);
+      if (pageNum > 1) {
+        pdfRef.current.setPage(pageNum - 1); // Go to the first page for previous button
+        setPageNum(pageNum - 1);
+      }
     }
   };
 

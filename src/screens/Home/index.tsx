@@ -10,6 +10,7 @@ import {
   Alert,
   ActivityIndicator,
   LogBox,
+  Linking,
 } from 'react-native';
 
 import axios from 'axios';
@@ -29,6 +30,8 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const HomeScreen = ({navigation}: Props): JSX.Element => {
   let accessToken = 'pat-na1-a59ebb9a-6abf-4a6a-b584-594085f94c37';
+  let defaultURL =
+    'https://nursing.com/nfnapp?utm_source=app&utm_medium=app&utm_campaign=nfn-app-login';
 
   const header = {
     headers: {
@@ -148,6 +151,7 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
                                   header,
                                 )
                                 .then(() => {
+                                  navigation.navigate('ViewPDF');
                                   setModalVisible(!modalVisible);
                                   setIsChecked(false);
                                   setFirstName('');
@@ -193,7 +197,7 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
               </Text>
               <Button
                 style={globalStyles.button}
-                onPress={() => navigation.navigate('ViewPDF')}
+                onPress={() => Linking.openURL(defaultURL)}
                 title="View Video Lessons"
               />
             </View>
