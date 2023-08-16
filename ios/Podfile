@@ -46,6 +46,7 @@ target 'NRSNG' do
   )
 
   pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
 
   target 'NRSNGTests' do
     inherit! :complete

@@ -25,6 +25,7 @@ import {styles as modalStyles} from './style/modal';
 
 import {RootStackParamList} from '../../global/Type';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
@@ -45,11 +46,36 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isFirstTime, setIsFirstTime] = useState(true);
 
   LogBox.ignoreLogs([
     'ViewPropTypes will be removed',
     'ColorPropType will be removed',
   ]);
+
+  const loadData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('email');
+      if (value !== null) {
+        setEmail(value);
+        setIsFirstTime(false);
+      }
+    } catch (error) {
+      console.error('Error loading data');
+    }
+  };
+
+  const saveData = async value => {
+    try {
+      await AsyncStorage.setItem('email', value);
+      setEmail(value);
+      setIsFirstTime(false);
+    } catch (error) {
+      console.error('Error saving data');
+    }
+  };
+
+  loadData();
 
   // const openURL = () => {
   //   const url = 'https://google.com'; // Replace with your desired URL
@@ -73,11 +99,23 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
                 source={require('../../assets/images/preview.png')}
                 style={globalStyles.preview}
               />
-              <Button
-                onPressOut={() => setModalVisible(true)}
-                style={globalStyles.button}
-                title="Start Reading"
-              />
+              {isFirstTime ? (
+                <Button
+                  onPressOut={() => {
+                    setModalVisible(true);
+                  }}
+                  style={globalStyles.button}
+                  title="Start Reading"
+                />
+              ) : (
+                <Button
+                  onPressOut={() => {
+                    navigation.navigate('ViewPDF');
+                  }}
+                  style={globalStyles.button}
+                  title="Start Reading"
+                />
+              )}
             </View>
           </View>
           <View style={globalStyles.sub_container_bottom}>
@@ -157,6 +195,7 @@ export const HomeScreen = ({navigation}: Props): JSX.Element => {
                                   setFirstName('');
                                   setEmail('');
                                   setIsLoading(false);
+                                  saveData(email);
                                 })
                                 .catch(() => {
                                   Alert.alert(

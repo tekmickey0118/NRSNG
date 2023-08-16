@@ -12,9 +12,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		225000C82A8614BE00E7CEFE /* NCLEX.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 225000C72A8614BE00E7CEFE /* NCLEX.pdf */; };
-		7FF9C059FE05F6E737F6C06A /* libPods-NRSNG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5987FB3343E88159B89D7E01 /* libPods-NRSNG.a */; };
+		60F4708538BEABE758119601 /* libPods-NRSNG-NRSNGTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 477EA1303BD119B5DB42EC9D /* libPods-NRSNG-NRSNGTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		CB5FD86DF855AD04085FC6B7 /* libPods-NRSNG-NRSNGTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DEFE79640E458C51FC290D /* libPods-NRSNG-NRSNGTests.a */; };
+		BEFE20CDFFAEB5D832D9A01C /* libPods-NRSNG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA313FD7CDDFA4B84E00871 /* libPods-NRSNG.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,14 +37,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = NRSNG/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = NRSNG/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = NRSNG/main.m; sourceTree = "<group>"; };
+		1FAF763497B74B32D8702233 /* Pods-NRSNG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG.debug.xcconfig"; path = "Target Support Files/Pods-NRSNG/Pods-NRSNG.debug.xcconfig"; sourceTree = "<group>"; };
 		225000C72A8614BE00E7CEFE /* NCLEX.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = NCLEX.pdf; path = ../../src/assets/pdf/NCLEX.pdf; sourceTree = "<group>"; };
-		4DDC90B233C197D124C02CB9 /* Pods-NRSNG-NRSNGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG-NRSNGTests.release.xcconfig"; path = "Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests.release.xcconfig"; sourceTree = "<group>"; };
-		5987FB3343E88159B89D7E01 /* libPods-NRSNG.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NRSNG.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B45A9EC74F09D9584EE0ED4 /* Pods-NRSNG-NRSNGTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG-NRSNGTests.release.xcconfig"; path = "Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests.release.xcconfig"; sourceTree = "<group>"; };
+		477EA1303BD119B5DB42EC9D /* libPods-NRSNG-NRSNGTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NRSNG-NRSNGTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FA313FD7CDDFA4B84E00871 /* libPods-NRSNG.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NRSNG.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NRSNG/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		85DEFE79640E458C51FC290D /* libPods-NRSNG-NRSNGTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NRSNG-NRSNGTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E7398C5D589B5CE3A2DA36F /* Pods-NRSNG-NRSNGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG-NRSNGTests.debug.xcconfig"; path = "Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9D849372703BA1AD4D13F518 /* Pods-NRSNG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG.debug.xcconfig"; path = "Target Support Files/Pods-NRSNG/Pods-NRSNG.debug.xcconfig"; sourceTree = "<group>"; };
-		C2221E1331A10F6B7CFF4F81 /* Pods-NRSNG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG.release.xcconfig"; path = "Target Support Files/Pods-NRSNG/Pods-NRSNG.release.xcconfig"; sourceTree = "<group>"; };
+		8A1D3B7C4D4AE76945E54800 /* Pods-NRSNG-NRSNGTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG-NRSNGTests.debug.xcconfig"; path = "Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DE76DEDACA3876258BDB1C79 /* Pods-NRSNG.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NRSNG.release.xcconfig"; path = "Target Support Files/Pods-NRSNG/Pods-NRSNG.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB5FD86DF855AD04085FC6B7 /* libPods-NRSNG-NRSNGTests.a in Frameworks */,
+				60F4708538BEABE758119601 /* libPods-NRSNG-NRSNGTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FF9C059FE05F6E737F6C06A /* libPods-NRSNG.a in Frameworks */,
+				BEFE20CDFFAEB5D832D9A01C /* libPods-NRSNG.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5987FB3343E88159B89D7E01 /* libPods-NRSNG.a */,
-				85DEFE79640E458C51FC290D /* libPods-NRSNG-NRSNGTests.a */,
+				6FA313FD7CDDFA4B84E00871 /* libPods-NRSNG.a */,
+				477EA1303BD119B5DB42EC9D /* libPods-NRSNG-NRSNGTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,10 +151,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D849372703BA1AD4D13F518 /* Pods-NRSNG.debug.xcconfig */,
-				C2221E1331A10F6B7CFF4F81 /* Pods-NRSNG.release.xcconfig */,
-				8E7398C5D589B5CE3A2DA36F /* Pods-NRSNG-NRSNGTests.debug.xcconfig */,
-				4DDC90B233C197D124C02CB9 /* Pods-NRSNG-NRSNGTests.release.xcconfig */,
+				1FAF763497B74B32D8702233 /* Pods-NRSNG.debug.xcconfig */,
+				DE76DEDACA3876258BDB1C79 /* Pods-NRSNG.release.xcconfig */,
+				8A1D3B7C4D4AE76945E54800 /* Pods-NRSNG-NRSNGTests.debug.xcconfig */,
+				3B45A9EC74F09D9584EE0ED4 /* Pods-NRSNG-NRSNGTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -166,12 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "NRSNGTests" */;
 			buildPhases = (
-				77393C62649A597F6C1192D0 /* [CP] Check Pods Manifest.lock */,
+				6338E4C11431226C00755302 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				747F4E2D90F46D9D5D79DA49 /* [CP] Embed Pods Frameworks */,
-				26B3E375F1A2F418D0B65B88 /* [CP] Copy Pods Resources */,
+				AF15136E976D8986CFA94D49 /* [CP] Embed Pods Frameworks */,
+				18B161048B8693CA5B069705 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,14 +187,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "NRSNG" */;
 			buildPhases = (
-				699B5B2B654B5CEA87F58B1D /* [CP] Check Pods Manifest.lock */,
+				CD905CC3ACDBDC5ECFE62948 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				EEBB147303FFE49DF5892ABB /* [CP] Embed Pods Frameworks */,
-				C78B58D0EFA3280F282AE41A /* [CP] Copy Pods Resources */,
+				FA1D5CEE7539BBC068CFD9E6 /* [CP] Embed Pods Frameworks */,
+				5C7D500338E88926912DFA94 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -278,7 +278,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		26B3E375F1A2F418D0B65B88 /* [CP] Copy Pods Resources */ = {
+		18B161048B8693CA5B069705 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,46 +295,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		699B5B2B654B5CEA87F58B1D /* [CP] Check Pods Manifest.lock */ = {
+		5C7D500338E88926912DFA94 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NRSNG/Pods-NRSNG-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NRSNG-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-NRSNG/Pods-NRSNG-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NRSNG/Pods-NRSNG-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		747F4E2D90F46D9D5D79DA49 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		77393C62649A597F6C1192D0 /* [CP] Check Pods Manifest.lock */ = {
+		6338E4C11431226C00755302 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,24 +334,46 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C78B58D0EFA3280F282AE41A /* [CP] Copy Pods Resources */ = {
+		AF15136E976D8986CFA94D49 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NRSNG/Pods-NRSNG-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NRSNG/Pods-NRSNG-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NRSNG/Pods-NRSNG-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NRSNG-NRSNGTests/Pods-NRSNG-NRSNGTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EEBB147303FFE49DF5892ABB /* [CP] Embed Pods Frameworks */ = {
+		CD905CC3ACDBDC5ECFE62948 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NRSNG-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA1D5CEE7539BBC068CFD9E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -442,7 +442,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E7398C5D589B5CE3A2DA36F /* Pods-NRSNG-NRSNGTests.debug.xcconfig */;
+			baseConfigurationReference = 8A1D3B7C4D4AE76945E54800 /* Pods-NRSNG-NRSNGTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -469,7 +469,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DDC90B233C197D124C02CB9 /* Pods-NRSNG-NRSNGTests.release.xcconfig */;
+			baseConfigurationReference = 3B45A9EC74F09D9584EE0ED4 /* Pods-NRSNG-NRSNGTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -493,13 +493,15 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D849372703BA1AD4D13F518 /* Pods-NRSNG.debug.xcconfig */;
+			baseConfigurationReference = 1FAF763497B74B32D8702233 /* Pods-NRSNG.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9JY4M29A9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NRSNG/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NRSNG;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -520,12 +522,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2221E1331A10F6B7CFF4F81 /* Pods-NRSNG.release.xcconfig */;
+			baseConfigurationReference = DE76DEDACA3876258BDB1C79 /* Pods-NRSNG.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G9JY4M29A9;
 				INFOPLIST_FILE = NRSNG/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NRSNG;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
